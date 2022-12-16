@@ -116,6 +116,14 @@ class techitdev_second_widgets extends \Elementor\Widget_Base {
                 'selector'=> '{{WRAPPER}} h3'
             ]
         );
+        $this->add_group_control(
+            \Elementor\Group_Control_Box_Shadow::get_type(),
+            [
+                'name'=> 'title_box_shadow',
+                'selector'=> '{{WRAPPER}} h3'
+            ]
+        );
+
 
         $this-> add_control(
             'description_options',
