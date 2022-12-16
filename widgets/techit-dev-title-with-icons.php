@@ -123,6 +123,13 @@ class techitdev_second_widgets extends \Elementor\Widget_Base {
                 'selector'=> '{{WRAPPER}} h3'
             ]
         );
+        $this->add_group_control(
+            \Elementor\Group_Control_Css_Filter::get_type(),
+            [
+                'name'=> 'title_CSS',
+                'selector'=> '{{WRAPPER}} h3'
+            ]
+        );
 
 
         $this-> add_control(
