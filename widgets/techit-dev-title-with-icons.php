@@ -208,6 +208,25 @@ class techitdev_second_widgets extends \Elementor\Widget_Base {
             ]
         );
       
+        $this->end_controls_section();
+        
+        $this->start_controls_section(
+            'image_section',
+            [
+                'label'=> esc_html__( 'Image','techitdev' ),
+                'tab'=> \Elementor\Controls_Manager::TAB_CONTENT
+            ]
+        );
+         $this-> add_control(
+            'image',
+            [
+                'label'=> esc_html__( 'Choose Image','techitdev' ),
+                'type'=> \Elementor\Controls_Manager::MEDIA,
+                'default'=> [
+                    'url'=> \Elementor\Utils::get_placeholder_image_src(),
+                ]
+            ]
+        );
     }
 
 
@@ -222,6 +241,10 @@ class techitdev_second_widgets extends \Elementor\Widget_Base {
         <p class="card__descriptions">
           <?php echo $settings['description'];?>
         </p>
+        <!-- Get Image URL -->
+        <div class="techit-dev-image m-auto text-center">
+            <img class="techitdev-image w-25 m-auto rounded-xl " src="<?php echo esc_url($settings['image']['url']);?>" alt="">
+        </div>
         <?php
     }
 }
