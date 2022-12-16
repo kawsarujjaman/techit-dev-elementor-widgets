@@ -138,6 +138,12 @@ class techitdev_second_widgets extends \Elementor\Widget_Base {
                 'selector'=> '{{WRAPPER}} h3'
             ]
         );
+        $this->add_group_control(
+            \Elementor\Group_Control_Text_Stroke::get_type(),[
+                'name'=> 'title_text_stroke',
+                'selector'=> '{{WRAPPER}} h3'
+            ]
+        );
 
         $this-> add_group_control(
             \Elementor\Group_Control_Flex_Item::get_type(),
