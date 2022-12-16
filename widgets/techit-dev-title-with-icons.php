@@ -109,7 +109,13 @@ class techitdev_second_widgets extends \Elementor\Widget_Base {
                 'selector'=> '{{WRAPPER}} h3'
             ]
         );
-
+        $this-> add_group_control(
+            \Elementor\Group_Control_Border::get_type(),
+            [
+                'name'=> 'title_border',
+                'selector'=> '{{WRAPPER}} h3'
+            ]
+        );
 
         $this-> add_control(
             'description_options',
