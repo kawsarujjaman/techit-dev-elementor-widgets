@@ -38,7 +38,7 @@ class techitdev_second_widgets extends \Elementor\Widget_Base {
         $this-> start_controls_section(
             'section_title',
             [
-                'lebel'=> esc_html__( 'Title', 'techitdev' ),
+                'label'=> esc_html__( 'Title', 'techitdev' ),
                 'tab'=> \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -130,8 +130,23 @@ class techitdev_second_widgets extends \Elementor\Widget_Base {
                 'selector'=> '{{WRAPPER}} h3'
             ]
         );
+        $this->add_group_control(
+            \Elementor\Group_Control_Flex_Container::get_type(),
+            [
+                'name'=> 'title_flex_container',
+                'selector'=> '{{WRAPPER}}'
+            ]
+        );
+        $this->end_controls_section();
 
-
+        $this-> start_controls_section(
+            'description_style',
+            [
+                'label'=> esc_html__( 'Decsription', 'techitdev' ),
+                'tab'=> \Elementor\Controls_Manager::TAB_STYLE,           
+            ]
+        );
+    
         $this-> add_control(
             'description_options',
             [
