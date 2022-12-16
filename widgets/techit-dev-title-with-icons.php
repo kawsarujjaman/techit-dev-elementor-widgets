@@ -103,8 +103,12 @@ class techitdev_second_widgets extends \Elementor\Widget_Base {
             ]
         );
         $this-> add_group_control(
-            \Elementor\Group_Control_Background
-        )
+            \Elementor\Group_Control_Background::get_type(),
+            [
+                'name'=> 'title_background',
+                'selector'=> '{{WRAPPER}} h3'
+            ]
+        );
 
 
         $this-> add_control(
