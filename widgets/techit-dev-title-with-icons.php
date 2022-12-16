@@ -227,6 +227,15 @@ class techitdev_second_widgets extends \Elementor\Widget_Base {
                 ]
             ]
         );
+        $this-> add_group_control(
+            \Elementor\Group_Control_Image_Size::get_type(),
+            [
+                'name'=> 'image',
+                'default'=> 'large',
+                'separator'=> 'none'
+            ]
+        );
+
     }
 
 
@@ -242,9 +251,20 @@ class techitdev_second_widgets extends \Elementor\Widget_Base {
           <?php echo $settings['description'];?>
         </p>
         <!-- Get Image URL -->
-        <div class="techit-dev-image m-auto text-center">
+        <!-- <div class="techit-dev-image m-auto text-center">
             <img class="techitdev-image w-25 m-auto rounded-xl " src="<?php echo esc_url($settings['image']['url']);?>" alt="">
-        </div>
+        </div> -->
+
+        <!-- Get image by ID -->
+        <div class="techit-dev-image w-25 m-auto text-center">
+           <?php 
+        //    echo wp_get_attachment_image( $settings['image']['id'], 'thumbnail');
+
+        echo \Elementor\Group_Control_Image_Size::get_attachment_image_html($settings);
+           
+           
+           ?>
+        </div> 
         <?php
     }
 }
