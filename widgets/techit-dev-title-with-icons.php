@@ -123,10 +123,26 @@ class techitdev_second_widgets extends \Elementor\Widget_Base {
                 'selector'=> '{{WRAPPER}} h3'
             ]
         );
+       
         $this->add_group_control(
             \Elementor\Group_Control_Css_Filter::get_type(),
             [
                 'name'=> 'title_CSS',
+                'selector'=> '{{WRAPPER}} h3'
+            ]
+        );
+        $this->add_group_control(
+            \Elementor\Group_Control_Text_Shadow::get_type(),
+            [
+                'name'=> 'title_Text_Shadow',
+                'selector'=> '{{WRAPPER}} h3'
+            ]
+        );
+
+        $this-> add_group_control(
+            \Elementor\Group_Control_Flex_Item::get_type(),
+            [
+                'name'=> 'title_felx_item',
                 'selector'=> '{{WRAPPER}} h3'
             ]
         );
