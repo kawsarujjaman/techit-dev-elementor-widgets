@@ -53,8 +53,28 @@ class techitdev_second_widgets extends \Elementor\Widget_Base {
         );
 
         $this->end_controls_section();
+        // Content Tab Ends
 
+        // Style tab start
 
+        $this-> start_controls_section(
+            'section_title_style',
+            [
+                'label'=> esc_html__( 'Title', 'techitdev' ),
+                'tab'=> \Elementor\Controls_Manager::TAB_STYLE,           
+            ]
+        );
+        $this->add_control(
+            'title_color',
+            [
+                'label'=> esc_html__( 'Text Color', 'techitdev'),
+                'type'=> \Elementor\Controls_Manager::COLOR,
+                'selectors'=> [
+                    '{{WRAPPER}}  .card-title' => 'color": {{VALUE}}'
+                ]
+            ]
+        );
+        $this->end_controls_section();
     }
 
 
