@@ -48,15 +48,25 @@ class techitdev_second_widgets extends \Elementor\Widget_Base {
             [
                 'label'=> esc_html__( 'Title', 'techitdev' ),
                 'type'=> \Elementor\Controls_Manager::TEXTAREA,
-                'default'=>  esc_html__( 'John Doe', 'techitdev' )
+                'default'=>  esc_html__( 'John Doe', 'techitdev' ),
+            ]
+        );
+        $this-> add_control(
+            'description',
+            [
+                'label'=> esc_html__( 'Description', 'techitdev' ),
+                'type'=> \Elementor\Controls_Manager::TEXTAREA,
+                'default'=> esc_html__( 'Card Description', 'techitdev')
             ]
         );
 
         $this->end_controls_section();
         // Content Tab Ends
 
-        // Style tab start
 
+
+
+        // Style tab start
         $this-> start_controls_section(
             'section_title_style',
             [
@@ -64,17 +74,67 @@ class techitdev_second_widgets extends \Elementor\Widget_Base {
                 'tab'=> \Elementor\Controls_Manager::TAB_STYLE,           
             ]
         );
+        $this-> add_control(
+            'title_option',
+            [
+                'label'=> esc_html__( 'Title Options', 'techitdev' ),
+                'type'=> \Elementor\Controls_Manager::HEADING,
+                'separator'=> 'before'
+            ]
+        );
+
+
+
         $this->add_control(
             'title_color',
             [
                 'label'=> esc_html__( 'Text Color', 'techitdev'),
                 'type'=> \Elementor\Controls_Manager::COLOR,
                 'selectors'=> [
-                    '{{WRAPPER}}  .card-title' => 'color": {{VALUE}}'
+                    '{{WRAPPER}}  h3' => 'color: {{VALUE}}'
                 ]
             ]
         );
-        $this->end_controls_section();
+        $this-> add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name'=> 'title_typography',
+                'selector'=> '{{WRAPPER }} h3'
+            ]
+        );
+        $this-> add_group_control(
+            \Elementor\Group_Control_Background
+        )
+
+
+        $this-> add_control(
+            'description_options',
+            [
+                'label'=> esc_html__( 'Description Options', 'techitdev' ),
+                'type'=> \Elementor\Controls_Manager::HEADING,
+                'separator'=> 'before'
+            ]
+        );
+
+
+        $this->add_control(
+            'description_color',
+            [
+                'label'=> esc_html__( 'Descrioption Color', 'techitdev' ),
+                'type'=> \Elementor\Controls_Manager::COLOR,
+                'selectors'=> [
+                    '{{WRAPPER}} .card__descriptions' => 'color: {{VALUE}}'
+                ]
+            ]
+        );
+        $this-> add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name'=> 'descriptopn_typogaphy',
+                'selector'=> '{{WRAPPER}} .card__descriptions'
+            ]
+        );
+      
     }
 
 
@@ -87,7 +147,7 @@ class techitdev_second_widgets extends \Elementor\Widget_Base {
           <?php echo $settings['title'];?>
         </h3>
         <p class="card__descriptions">
-          <!-- <?php echo $settings['description'];?> -->
+          <?php echo $settings['description'];?>
         </p>
         <?php
     }
