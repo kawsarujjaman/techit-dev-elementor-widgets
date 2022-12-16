@@ -66,7 +66,7 @@ class techitdev_second_widgets extends \Elementor\Widget_Base {
 
 
 
-        // Style tab start
+        // Title Style tab start
         $this-> start_controls_section(
             'section_title_style',
             [
@@ -130,14 +130,25 @@ class techitdev_second_widgets extends \Elementor\Widget_Base {
                 'selector'=> '{{WRAPPER}} h3'
             ]
         );
+        $this-> add_group_control(
+            \Elementor\Group_Control_Flex_Item::get_type(),
+            [
+                'name'=> 'title_felx_item',
+                'selector'=> '{{WRAPPER}} h3'
+            ]
+        );
         $this->add_group_control(
             \Elementor\Group_Control_Flex_Container::get_type(),
             [
                 'name'=> 'title_flex_container',
-                'selector'=> '{{WRAPPER}}'
+                'selector'=> '{{WRAPPER}} h3'
             ]
         );
         $this->end_controls_section();
+
+
+
+        // Description Style tab start
 
         $this-> start_controls_section(
             'description_style',
