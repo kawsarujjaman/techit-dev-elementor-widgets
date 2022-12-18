@@ -30,4 +30,36 @@ class techit_dev_sample_widgets extends \Elementor\Widget_Base {
         return 'https://techitdev.com';
     }
 
+    protected function register_controls()
+    {
+        $this-> start_controls_section(
+            'content_section',
+            [
+                'label'=> esc_html__( 'Section Content', 'techitdev' ),
+                'tab'=> \Elementor\Controls_Manager::TAB_CONTENT
+            ]
+        );
+
+        $this->add_control(
+            'price',
+            [
+                'label'=> esc_html__( 'Price', 'techitdev'),
+                'type'=> \Elementor\Controls_Manager::NUMBER,
+                'min'=> 5,
+                'max'=> 100,
+                // 'step'=> 1,
+                'default'=> ''
+            ]
+        );
+
+        $this->end_controls_section();
+    }
+
+    protected function render()
+    {
+        $settings = $this->get_settings_for_display();
+        ?>
+            <span class="price"> <b>$</b> <?php echo $settings['price'];?> </span>
+        <?php
+    }
 }
