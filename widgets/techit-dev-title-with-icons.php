@@ -55,7 +55,16 @@ class techitdev_second_widgets extends \Elementor\Widget_Base {
             'link',
             [
                 'label'=> esc_html__( 'Link', 'techitdev' ),
-                'type'=> \Elementor\Controls_Manager::URL,               
+                'type'=> \Elementor\Controls_Manager::URL, 
+                'placeholder'=> esc_html__( 'https://google.com', 'techitdev' ),
+                'default'=>
+                [
+                    'url'=> '',
+                    'is_external'=> true,
+                    'nofollow'=> true,
+                    // 'custom_attributes'=> '',
+                ]     ,
+                'label_block'=> true,         
             ]
         );
         $this-> add_control(
@@ -251,12 +260,20 @@ class techitdev_second_widgets extends \Elementor\Widget_Base {
         $settings= $this->get_settings_for_display();
 
         ?>
+        <?php 
+            if( !empty( $settings['link']['url'])){
+                $this->add_link_attributes('link', $settings['link']);
+            }        
+        ?> 
+
         <h3 class="card-title">
-          <?php echo $settings['title'];?>
+            <a <?php echo $this->get_render_attribute_string('link');?>>    <?php echo $settings['title'];?>  </a>
         </h3>
+
         <p class="card__descriptions">
           <?php echo $settings['description'];?>
         </p>
+        
         <!-- Get Image URL -->
         <!-- <div class="techit-dev-image m-auto text-center">
             <img class="techitdev-image w-25 m-auto rounded-xl " src="<?php echo esc_url($settings['image']['url']);?>" alt="">
