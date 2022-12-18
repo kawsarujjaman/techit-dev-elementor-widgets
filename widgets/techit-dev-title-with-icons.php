@@ -51,6 +51,13 @@ class techitdev_second_widgets extends \Elementor\Widget_Base {
                 'default'=>  esc_html__( 'John Doe', 'techitdev' ),
             ]
         );
+        $this->add_control(
+            'link',
+            [
+                'label'=> esc_html__( 'Link', 'techitdev' ),
+                'type'=> \Elementor\Controls_Manager::URL,               
+            ]
+        );
         $this-> add_control(
             'description',
             [
@@ -267,4 +274,11 @@ class techitdev_second_widgets extends \Elementor\Widget_Base {
         </div> 
         <?php
     }
+
+    protected function content_template() {
+		?>
+		<h3>{{{ settings.title }}}</h3>
+		<?php
+	}
+    
 }
