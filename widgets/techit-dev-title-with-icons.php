@@ -56,7 +56,8 @@ class techitdev_second_widgets extends \Elementor\Widget_Base {
             [
                 'label'=> esc_html__( 'Link', 'techitdev' ),
                 'type'=> \Elementor\Controls_Manager::URL, 
-                'placeholder'=> esc_html__( 'https://google.com', 'techitdev' ),
+                'placeholder'=> esc_html__( 'Past a URL or type', 'techitdev' ),
+                'options'=>['url','is_external', 'nofollow'],
                 'default'=>
                 [
                     'url'=> '',
@@ -273,7 +274,7 @@ class techitdev_second_widgets extends \Elementor\Widget_Base {
         <p class="card__descriptions">
           <?php echo $settings['description'];?>
         </p>
-        
+
         <!-- Get Image URL -->
         <!-- <div class="techit-dev-image m-auto text-center">
             <img class="techitdev-image w-25 m-auto rounded-xl " src="<?php echo esc_url($settings['image']['url']);?>" alt="">

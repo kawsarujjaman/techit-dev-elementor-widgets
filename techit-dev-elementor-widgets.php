@@ -31,8 +31,10 @@
  function register_techit_dev_custom_widgets( $widgets_manager){
     require_once (__DIR__.'/widgets/techit-dev-widgets.php');
     require_once (__DIR__.'/widgets/techit-dev-title-with-icons.php');
+    require_once(__DIR__).'/widgets/techit-dev-sample-widget.php';
 
     $widgets_manager-> register(new \techitdev_card_widgets()); //Register the widget
     $widgets_manager-> register( new \techitdev_second_widgets());
+    $widgets_manager->register(new \techitdev_second_widgets());
  }
  add_action( 'elementor/widgets/register', 'register_techit_dev_custom_widgets');
