@@ -137,6 +137,7 @@ class techit_dev_sample_widgets extends \Elementor\Widget_Base {
     protected function render()
     {
         $settings = $this->get_settings_for_display();
+        
         if( $settings['list']){
             echo '<ul>';
             foreach ($settings['list'] as $item){
