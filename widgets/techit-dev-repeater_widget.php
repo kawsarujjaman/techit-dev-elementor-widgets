@@ -102,6 +102,17 @@ class techit_dev_repeater_wideget extends \Elementor\Widget_Base {
             ]
         );
 
+        $this->add_control(
+            'important_note',
+            [
+                'label'=> esc_html__( 'Important Note', 'techitdev' ),
+                'type'=> \Elementor\Controls_Manager::RAW_HTML,
+                'raw'=> esc_html__( 'A very Important message to show in the panel', 'techitdev' ),
+                'content_classes'=> 'rawHTML'
+            ]
+        );
+
+
         $this->end_controls_section();
     }
 
