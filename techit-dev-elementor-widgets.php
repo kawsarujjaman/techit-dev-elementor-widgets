@@ -35,6 +35,24 @@
 
     $widgets_manager-> register(new \techitdev_card_widgets()); //Register the widget
     $widgets_manager-> register( new \techitdev_second_widgets());
-    $widgets_manager->register(new \techitdev_second_widgets());
+    $widgets_manager->register(new \techit_dev_sample_widgets());
  }
  add_action( 'elementor/widgets/register', 'register_techit_dev_custom_widgets');
+
+ /**
+  * 
+  * New custom category
+  */
+
+ function add_elementor_widget_categories( $elements_manager ){
+   
+   $elements_manager-> add_category(
+       'techitdev', 
+       [
+           'title'=> esc_html__( 'TechIT dev', 'techitdev' ),
+           'icon'=> 'fa fa plug',
+       ]
+   );
+}
+
+add_action( 'elementor/elements/categories_registered', 'add_elementor_widget_categories' );

@@ -23,13 +23,14 @@ class techit_dev_sample_widgets extends \Elementor\Widget_Base {
     }
     public function get_categories()
     {
-        return ['basic'];   
+        return ['techitdev'];   
     }
     public function get_custom_help_url()
     {
         return 'https://techitdev.com';
     }
 
+ 
     protected function register_controls()
     {
         $this-> start_controls_section(
@@ -51,6 +52,49 @@ class techit_dev_sample_widgets extends \Elementor\Widget_Base {
                 'default'=> ''
             ]
         );
+        $this-> add_control(
+            'show_price',
+            [
+                'label'=> esc_html__( 'Show Price', 'techitdev' ),
+                'type'=> \Elementor\Controls_Manager::SWITCHER,
+                'label_on'=> esc_html__( 'Show','techitdev' ),
+                'label_off'=> esc_html__( 'Hide','techitdev' ),
+                'return_value'=> 'yes',
+                'default'=> 'yes',
+            ]
+        );
+        $this-> add_control(
+            'border_popover_toggle',
+            [
+                'label'=> esc_html__( 'Border', 'techitdev' ),
+                'type'=> \Elementor\Controls_Manager::POPOVER_TOGGLE,
+                'label_off'=> esc_html__( 'Default', 'techitdev'),
+                'label_on'=> esc_html__( 'Custom', 'techitdev'),
+                'return_value'=> 'yes',
+                'default'=> 'yes',
+            ]
+        );
+        $this->start_popover();
+        $this->add_group_control(
+          \Elementor\Group_Control_Border::get_type(),
+          [
+            'name'=> 'border',
+            'selector'=> '{{WRAPPER}} .price',
+          ]
+        );
+        $this->end_popover();
+        
+
+        $this->add_control(
+            'item_description',
+            [
+                'label'=> esc_html__( 'Description', 'techitdev'),
+                'type'=> \Elementor\Controls_Manager::WYSIWYG,
+                'default'=> esc_html__( 'Default description', 'techitdev' ),
+                'placeholder'=> esc_html__( 'Type your description here', 'techitdev' ),
+                'separator'=> 'before',
+            ]
+        );
 
         $this->end_controls_section();
     }
@@ -59,7 +103,22 @@ class techit_dev_sample_widgets extends \Elementor\Widget_Base {
     {
         $settings = $this->get_settings_for_display();
         ?>
-            <span class="price"> <b>$</b> <?php echo $settings['price'];?> </span>
+            <div class="">
+                <?php 
+                if( 'yes' === $settings['show_price'] ){
+                    ?>
+                    <span class="price"> <b>$</b> <?php echo $settings['price'];?> </span>
+                    <?php
+                };
+                
+                ?>
+            
+            <br>
+            <span class="description">
+                <?php echo $settings['item_description'];?>
+            </span>
+            </div>
         <?php
     }
 }
+
