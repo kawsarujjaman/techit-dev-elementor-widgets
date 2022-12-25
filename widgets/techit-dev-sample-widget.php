@@ -42,6 +42,22 @@ class techit_dev_sample_widgets extends \Elementor\Widget_Base {
         );
 
         $this->add_control(
+            'list',
+            [
+                'label'=> esc_html__( "Show Elements", 'techitdev' ),
+                'type'=> \Elementor\Controls_Manager::SELECT2,
+                'label_block'=> true,
+                'multiple'=> true,
+                'options'=> [
+                    'price'=> esc_html__( 'Price', 'techitdev' ),
+                    'item_description'=> esc_html__( 'Description', 'techitdev' ),
+                    'button'=> esc_html__( 'Button', 'techitdev' ),
+                ],
+                'default'=> ['price', 'item_description'],
+            ]
+        );
+
+        $this->add_control(
             'price',
             [
                 'label'=> esc_html__( 'Price', 'techitdev'),
@@ -83,6 +99,25 @@ class techit_dev_sample_widgets extends \Elementor\Widget_Base {
           ]
         );
         $this->end_popover();
+
+        $this-> add_control(
+            'text-align',
+            [
+                'label'=> esc_html__( 'Text Align', 'techitdev' ),
+                'type'=> \Elementor\Controls_Manager::SELECT,
+                'default'=> 'left',
+                'options'=> [
+                    ''=> esc_html__( 'Default', 'techitdev' ),
+                    'left'=> esc_html__( 'Left', 'techitdev' ),
+                    'center'=> esc_html__( 'Center', 'techitdev' ),
+                    'Right'=> esc_html__( 'Right', 'techitdev' ),
+                ],
+                'selectors'=> [
+                    '{{WRAPPER}} .price' => 'text-align: {{VALUE}};',
+                ],
+            ]
+                
+        );
         
 
         $this->add_control(
@@ -102,6 +137,13 @@ class techit_dev_sample_widgets extends \Elementor\Widget_Base {
     protected function render()
     {
         $settings = $this->get_settings_for_display();
+        if( $settings['list']){
+            echo '<ul>';
+            foreach ($settings['list'] as $item){
+                echo '<li>' .$item. '</li>';
+            }
+            echo '</ul>';
+        }
         ?>
             <div class="">
                 <?php 
